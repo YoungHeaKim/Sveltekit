@@ -1,103 +1,34 @@
 <script>
 	import { page } from '$app/stores';
 	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+	import AddICon from '$lib/icons/add.svg';
+	import CloseICon from '$lib/icons/close.svg';
 </script>
 
 <header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
-
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/add' ? 'page' : undefined}>
-				<a href="/add">About</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/edit') ? 'page' : undefined}>
-				<a href="/edit">Sverdle</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
-
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
+		<div class="AddButton">
+			<a href="/new"><img src={AddICon} width="15px" height="15px" /> New Reservation</a>
+		</div>
+		<div class="Title">
+			<p>{$page.url.pathname.startsWith('/new') ? 'New ' : $page.url.pathname.startsWith('/edit') ? 'edit': ''}Reservation</p>
+		</div>
+		<div class="closeButton">
+			<a href="/sverdle"><img src={CloseICon} width="20px" height="20px"/></a>
 	</div>
 </header>
 
 <style>
 	header {
 		display: flex;
-		justify-content: space-between;
-	}
-
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
-
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
-
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
-	}
-
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
 		justify-content: center;
 		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
-
-	li {
+		background-color: #FFF;
+		height: 3rem;
+		padding-block: 20px;
 		position: relative;
-		height: 100%;
 	}
 
-	li[aria-current='page']::before {
+	div[aria-current='page']::before {
 		--size: 6px;
 		content: '';
 		width: 0;
@@ -109,21 +40,39 @@
 		border-top: var(--size) solid var(--color-theme-1);
 	}
 
-	nav a {
+	.AddButton {
+		box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
 		display: flex;
-		height: 100%;
+		justify-content: center;
 		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
+		border-radius: 8px;
+		background-color: rgba(235, 235 , 235, 0.4);
+		position: absolute;
+		left: 20px;
 	}
 
-	a:hover {
-		color: var(--color-theme-1);
+	.AddButton a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 14px;
+		line-height: 14px;
+		height: 2rem;
+		padding-inline: 10px;
+	}
+
+	.AddButton a img {
+		margin-right: 5px;
+	}
+
+	.Title p {
+		font-size: 20px;
+	}
+
+	.closeButton {
+		position: absolute;
+		right: 20px;
+		display: flex;
+		align-items: center;
 	}
 </style>
