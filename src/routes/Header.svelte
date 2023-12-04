@@ -13,7 +13,7 @@
 			<p>{$page.url.pathname.startsWith('/new') ? 'New ' : $page.url.pathname.startsWith('/edit') ? 'edit': ''}Reservation</p>
 		</div>
 		<div class="closeButton">
-			<a href="/sverdle"><img src={CloseICon} width="20px" height="20px"/></a>
+			<a href="/"><img src={CloseICon} width="20px" height="20px"/></a>
 	</div>
 </header>
 

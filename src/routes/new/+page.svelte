@@ -1,10 +1,10 @@
 <svelte:head>
 	<title>ADD</title>
-	<meta name="description" content="About this app" />
+	<meta name="description" content="New Reservation" />
 </svelte:head>
 
 <div class="text-column">
-	<h1>About this app</h1>
+	<h1>New Reservation</h1>
 
 	<p>
 		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
