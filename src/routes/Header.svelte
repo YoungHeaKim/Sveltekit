@@ -3,11 +3,17 @@
 	import logo from '$lib/images/svelte-logo.svg';
 	import AddICon from '$lib/icons/add.svg';
 	import CloseICon from '$lib/icons/close.svg';
+	import BackICon from '$lib/icons/keyboard_backspace.svg';
+
+	console.log('page: ',page.params);
 </script>
 
 <header>
 		<div class="AddButton">
-			<a href="/new"><img src={AddICon} width="15px" height="15px" /> New Reservation</a>
+			<a href={$page.url.pathname === '/' ? "/new": '/'}>
+				<img src={$page.url.pathname === '/' ?AddICon: BackICon} width={$page.url.pathname === '/' ? "15px": '20px'} height={$page.url.pathname === '/' ? '15px': '20px' } class={$page.url.pathname !== '/' && 'AddButtonBackIcon'}/> 
+				{$page.url.pathname === '/' ? ' New Reservation': ''}
+			</a>
 		</div>
 		<div class="Title">
 			<p>{$page.url.pathname.startsWith('/new') ? 'New ' : $page.url.pathname.startsWith('/edit') ? 'edit': ''}Reservation</p>
@@ -26,18 +32,6 @@
 		height: 3rem;
 		padding-block: 20px;
 		position: relative;
-	}
-
-	div[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
 	}
 
 	.AddButton {
@@ -63,6 +57,10 @@
 
 	.AddButton a img {
 		margin-right: 5px;
+	}
+
+	.AddButtonBackIcon {
+		margin-right: 0;
 	}
 
 	.Title p {
