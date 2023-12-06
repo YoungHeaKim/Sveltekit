@@ -6,7 +6,7 @@ interface ReservationType {
   phone: string;
   date: Date;
   guests: number;
-  selectTable?: number;
+  selectTable?: number[];
   floor?: number;
   note?: string;
 }

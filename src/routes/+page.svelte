@@ -3,6 +3,8 @@
 	import TrashIcon from '$lib/icons/trash.svg';
 	import EditIcon from '$lib/icons/edit.svg';
 	import GroupIcon from '$lib/icons/group.svg';
+	import TodayIcon from '$lib/icons/today.svg';
+	import Dayjs from 'Dayjs';
 	
 	let list = [];
 	reservationList.subscribe(v => list = v);
@@ -20,16 +22,18 @@
 			<h2>김용해</h2>
 			<div>010-5291-1892</div>
 		</div>
-		<p>{new Date()}</p>
+		<div class="rowWrap">
+			<img src={TodayIcon} width="20px" height="20px"/>
+			<p>{Dayjs().format('MM D, H:mm A')}</p>
+		</div>
 		<div class="rowWrap">
 			<img src={GroupIcon} width="20px" height="20px"/>
 			<p>3</p>
 		</div>
 		<div class="rowWrap">
-			<p>Reserved Table</p>
+			<p class="label">Reserved Table</p>
 			<p>7</p>
-			<p>Reserved Table</p>
-			<p>Floor 1</p>
+			<p class="label">Floor 1</p>
 		</div>
 		<div class="rowWrap">
 			<p>note</p>
@@ -45,16 +49,18 @@
 			<h2>김용해</h2>
 			<div>010-5291-1892</div>
 		</div>
-		<p>{new Date()}</p>
+		<div class="rowWrap">
+			<img src={TodayIcon} width="20px" height="20px"/>
+			<p>{Dayjs().format('MM D, H:mm A')}</p>
+		</div>
 		<div class="rowWrap">
 			<img src={GroupIcon} width="20px" height="20px"/>
 			<p>3</p>
 		</div>
 		<div class="rowWrap">
-			<p>Reserved Table</p>
-			<p>7</p>
-			<p>Reserved Table</p>
-			<p>Floor 1</p>
+			<p class="label">Reserved Table</p>
+			<p>7,8</p>
+			<p class="label">Floor 1</p>
 		</div>
 		<div class="rowWrap">
 			<p>note</p>
@@ -78,7 +84,7 @@
 			</div>
 			<div class="rowWrap">
 				<p>Reserved Table</p>
-				<p>{item.table}</p>
+				<p>{item.selectTable}</p>
 				<p>Reserved Table</p>
 				<p>Floor {item.floor}</p>
 			</div>
@@ -108,6 +114,7 @@
 		background-color: #fff;
 		padding: 20px 15px;
 		box-shadow: 0px 3px 3px 3px rgba(0, 0, 0, 0.2);
+		width: 340px;
 	}
 
 	.rowWrap {
@@ -135,5 +142,10 @@
 	button {
 		border: 0;
 		border-radius: 4px;
+	}
+
+	.label {
+		font-size: 14px;
+		color: grey;
 	}
 </style>
